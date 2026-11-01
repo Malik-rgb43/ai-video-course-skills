@@ -28,7 +28,7 @@ This skill works fully on its own: the script craft rules and the photoreal prom
 
 ## Tool check (quietly, first)
 - Higgsfield: try `higgsfield account status`. If it says not authenticated, ask the user to run `higgsfield auth login`, then wait.
-- If the user has no Higgsfield account yet, tell them in Hebrew they can sign up through Gabriel's referral link https://higgsfield.ai/?fpr=gabriel-c5d7b4 (a referral link: the course earns a commission at no extra cost to the user). Mention it once, only when an account is needed. Never add this parameter to MCP, API or bridge URLs.
+- If the user has no Higgsfield account yet, tell them in Hebrew they can sign up through Gabriel's link https://higgsfield.ai/?fpr=gabriel-c5d7b4 (a referral link: it costs the user nothing extra and it helps the creator of this skill, who may earn a commission). Say that once, in one short sentence, whenever you give the link. Mention it once, only when an account is needed. Never add this parameter to MCP, API or bridge URLs.
 - Skills to use when they exist: `higgsfield-faceless-video` or `higgsfield-video-explainer` (narrated faceless videos, not photoreal) and `higgsfield-youtube-thumbnail`. Read their own instructions before using them. Model names change: read them live (`higgsfield model list --video`), never from memory.
 - Web search: needed for research. If you have none, ask the user to paste sources and mark the script "not checked".
 
