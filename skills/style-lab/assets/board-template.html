@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Style Board</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=Heebo:wght@300;400;500;600;700;800&display=swap">
+<style>
+/* Course brand tokens ("וידאו עם AI"): Karantina 700 headlines, Heebo body (-0.04em), Consolas code;
+   white / black / violet. Light by default, dark by system setting or the theme button. */
+:root{
+  --bg:#ffffff; --bg2:#f5f5f5; --surface:#ffffff; --surface2:#f7f7f8; --line:rgba(0,0,0,.08); --line2:rgba(0,0,0,.14);
+  --fg:#000000; --muted:#555555; --dim:#959595;
+  --accent:#7c5cff; --accent-hi:#9a82ff; --accent-text:#5b3fe0; --accent-ink:#ffffff; --accent-soft:#ece8ff;
+  --ok:#0b8a56; --danger:#d93a55; --note:#b07800; --callout:#d93a55;
+  --shadow:0 10px 30px rgba(0,0,0,.08); --glow:none;
+  --display:"Karantina","Heebo",system-ui,sans-serif; --body:"Heebo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:ui-monospace,Consolas,"Courier New",monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0b0910; --bg2:#110e18; --surface:#17131f; --surface2:#1e1929; --line:rgba(237,233,255,.09); --line2:rgba(237,233,255,.16);
+  --fg:#f4f1fb; --muted:#aba4bf; --dim:#7e7791;
+  --accent-text:#b8a8ff; --accent-soft:rgba(124,92,255,.16); --ok:#5cffb0; --danger:#ff7a90; --note:#ffc94d; --callout:#ff7a90;
+  --shadow:0 18px 40px -24px rgba(0,0,0,.8); --glow:radial-gradient(80% 60% at 50% 0%,rgba(124,92,255,.22),transparent 70%);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b0910; --bg2:#110e18; --surface:#17131f; --surface2:#1e1929; --line:rgba(237,233,255,.09); --line2:rgba(237,233,255,.16);
+  --fg:#f4f1fb; --muted:#aba4bf; --dim:#7e7791;
+  --accent-text:#b8a8ff; --accent-soft:rgba(124,92,255,.16); --ok:#5cffb0; --danger:#ff7a90; --note:#ffc94d; --callout:#ff7a90;
+  --shadow:0 18px 40px -24px rgba(0,0,0,.8); --glow:radial-gradient(80% 60% at 50% 0%,rgba(124,92,255,.22),transparent 70%);
+  color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);background-image:var(--glow),linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:100% 600px,32px 32px,32px 32px;background-repeat:no-repeat,repeat,repeat;
+  color:var(--fg);font-family:var(--body);letter-spacing:-.04em;font-size:15px;line-height:1.55}
+h1,h2,h3,.display{font-family:var(--display);font-weight:700;letter-spacing:0;line-height:1}
+code,kbd,.mono{font-family:var(--mono);letter-spacing:0}
+.on-accent{background:var(--accent);color:var(--accent-ink);font-family:var(--display);font-weight:700;letter-spacing:0;border-radius:10px;padding:0 .22em .06em}
+button,input,textarea,select{font:inherit;letter-spacing:inherit;color:inherit}
+.btn{font-weight:600;border:1px solid var(--line2);background:var(--surface);color:var(--fg);border-radius:12px;padding:8px 16px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-family:var(--display);font-weight:700;letter-spacing:0;font-size:20px;line-height:1.1;padding:6px 18px 8px}
+.btn.ok{color:var(--ok);border-color:var(--ok)}
+:focus-visible{outline:2px solid var(--accent-hi);outline-offset:2px}
+textarea,input[type=text]{width:100%;background:var(--surface);border:1px solid var(--line2);border-radius:12px;padding:10px 12px}
+.theme-btn{position:fixed;inset-block-start:12px;inset-inline-end:12px;z-index:20;border-radius:999px;padding:6px 12px;font-size:13px}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+/* Layout: a design-tool canvas. Sticky page list at the start side (like a design tool's Pages list),
+   one panel per scene category: example grid + annotated breakdowns + the four "why" questions. */
+.shell{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:100vh}
+nav{background:var(--surface);border-inline-end:1px solid var(--line2);padding:18px 12px;position:sticky;top:0;height:100vh;overflow:auto;
+  padding-inline-start:max(12px,env(safe-area-inset-right,0px))}
+nav .t{font-family:var(--display);font-size:30px;padding:4px 10px 4px}
+nav .pg{color:var(--muted);font-size:12px;padding:8px 10px 4px}
+nav a{display:flex;gap:10px;align-items:center;color:var(--fg);text-decoration:none;padding:7px 10px;border-radius:10px;font-size:14px}
+nav a::before{content:"#";color:var(--dim)}
+nav a:hover{background:var(--accent-soft)} nav a.on{background:var(--accent);color:var(--accent-ink)} nav a.on::before{color:var(--accent-ink)}
+main{padding-block:28px 80px;padding-inline:max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:28px;min-width:0}
+.top{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:end;justify-content:space-between}
+h1{margin:0;font-size:clamp(40px,6vw,72px)}
+.sub{color:var(--muted);margin-top:8px;max-width:70ch}
+.panel{background:var(--surface);border:1px solid var(--line2);border-radius:20px;padding:clamp(16px,2.6vw,32px);scroll-margin-top:16px;box-shadow:var(--shadow)}
+.panel h2{margin:0 0 4px;font-size:38px}
+.panel .count{color:var(--muted);font-size:13px}
+.panel .rule{margin:10px 0 0;max-width:80ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px;margin-top:18px}
+.tile{aspect-ratio:9/16;max-width:100%;border:0;padding:0;border-radius:8px;background:#111 center/cover no-repeat;cursor:pointer;position:relative;color:#fff;font-size:11px}
+.tile span{position:absolute;inset-inline-start:4px;bottom:4px;background:rgba(0,0,0,.6);padding:1px 6px;border-radius:6px;direction:ltr}
+.tile.empty{background:repeating-linear-gradient(135deg,var(--surface2) 0 8px,var(--line2) 8px 9px);color:var(--muted)}
+.tile.empty span{background:transparent;color:var(--muted)}
+.ann-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,430px),1fr));gap:22px;margin-top:24px}
+.ann{display:grid;grid-template-columns:150px minmax(0,1fr);gap:28px;align-items:center;position:relative;background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:16px}
+.ann .frame{aspect-ratio:9/16;max-width:100%;border-radius:8px;background:#111 center/cover no-repeat;position:relative}
+.ann .frame i{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--callout);transform:translate(-50%,-50%);box-shadow:0 0 0 3px rgba(217,58,85,.25)}
+.ann ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px}
+.ann li{font-size:14.5px;line-height:1.3;position:relative;z-index:1}
+.ann svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.ann path{fill:none;stroke:var(--callout);stroke-width:1.6}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:14px;margin-top:22px}
+.why label{display:block;font-weight:600;margin-bottom:6px}
+.why label em{font-style:normal;font-family:var(--display);font-weight:700;letter-spacing:0;font-size:22px;color:var(--accent-text)}
+.why textarea{min-height:96px;resize:vertical}
+.tokens{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:18px}
+.tok{background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:16px;min-width:0}
+.tok h3{margin:0 0 10px;font-size:24px;color:var(--accent-text)}
+.sw{display:flex;gap:10px;flex-wrap:wrap}
+.sw div{width:64px}
+.sw b{display:block;height:44px;border-radius:10px;border:1px solid var(--line2)}
+.sw small{display:block;font-size:11px;color:var(--muted);margin-top:4px;word-break:break-all}
+.font-sample{font-size:30px;line-height:1.15;margin:4px 0}
+.tok p{margin:6px 0 0;font-size:13.5px}
+dialog{border:1px solid var(--line2);border-radius:18px;padding:0;max-width:min(980px,94vw);background:var(--surface);color:var(--fg)}
+dialog::backdrop{background:rgba(11,9,16,.6)}
+.dlg{display:grid;grid-template-columns:240px minmax(0,1fr);gap:20px;padding:20px;padding-top:56px}
+.dlg video{width:100%;aspect-ratio:9/16;background:#000;border-radius:10px}
+.dlg img{width:100%;border-radius:10px}
+.dlg pre{white-space:pre-wrap;font:13px/1.5 var(--body);margin:0}
+.x{position:absolute;inset-inline-end:12px;top:10px}
+@media (max-width:820px){.shell{grid-template-columns:minmax(0,1fr)}nav{position:static;height:auto;display:flex;flex-wrap:wrap;gap:4px;border-inline-end:0;border-bottom:1px solid var(--line2)}nav .t,nav .pg{width:100%}.ann{grid-template-columns:110px minmax(0,1fr)}.dlg{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav aria-label="עמודים"><div class="t">בורד סגנון</div><div class="pg">עמודים</div><div id="pages"></div></nav>
+  <main id="main"></main>
+</div>
+<dialog id="dlg"><button class="btn x" type="button" id="dlg-x">סגירה</button><div class="dlg" id="dlg-body"></div></dialog>
+
+<!-- Claude fills this block from the style's board.json.
+     tiles: library animations (thumb = published image path; clip/strip/notes optional for the detail view).
+     annotations: x,y are percent positions on the frame; each callout's label is one measurable rule. -->
+<script type="application/json" id="board-data">
+{
+ "example": true,
+ "style": "סגנון לדוגמה",
+ "subtitle": "בורד לדוגמה: הקטגוריות והחוקים כאן הם מקום שמור עד שהסגנון יאומן על סרטוני הרפרנס.",
+ "tokens": {
+  "fonts": [
+   {
+    "name": "Heebo",
+    "role": "טקסט ראשי, דק ועבה (ברירת המחדל של המותג)",
+    "sample": "רעיון אחד",
+    "css": "font-family:Heebo;font-weight:800;letter-spacing:-0.04em"
+   },
+   {
+    "name": "Karantina 700",
+    "role": "מילת המפתח וכותרות (ברירת המחדל של המותג)",
+    "sample": "הנקודה",
+    "css": "font-family:Karantina;font-weight:700"
+   }
+  ],
+  "colors": [
+   {
+    "hex": "#7C5CFF",
+    "name": "סגול"
+   },
+   {
+    "hex": "#FFFFFF",
+    "name": "רקע לבן"
+   },
+   {
+    "hex": "#0B0910",
+    "name": "רקע כהה"
+   }
+  ],
+  "textures": [
+   "גריד בהיר על הרקע",
+   "נייר סיבים רק על אלמנטים מנייר שזזים"
+  ],
+  "shapes": [
+   "כרטיסים מעוגלים עם צל מגע רך",
+   "גלולה סגולה אחת מאחורי מילת המפתח"
+  ],
+  "sizing": [
+   "מילת המפתח גדולה פי 2-3 מהשורה הדקה",
+   "לכל היותר 2-3 אלמנטים על המסך"
+  ],
+  "layout": [
+   "כתוביות מתחת לסנטר בשוט פנים מלא",
+   "הבי־רול במרכז האזור הפנוי מעל הדובר"
+  ]
+ },
+ "categories": [
+  {
+   "id": "captions",
+   "name": "כתוביות על המסך",
+   "rule": "1-2 מילים בכל פעם; מילת המפתח עוברת לפונט הכותרות; אף כתובית לא קצרה מ־0.3 שנ'.",
+   "tiles": [
+    {
+     "id": "V01-A01",
+     "label": "מילת מפתח"
+    },
+    {
+     "id": "V02-A03",
+     "label": "שתי מילים"
+    },
+    {
+     "id": "V04-A02",
+     "label": "מספר"
+    }
+   ],
+   "annotations": [
+    {
+     "thumb": "",
+     "callouts": [
+      {
+       "x": 50,
+       "y": 63,
+       "label": "טקסט דק וקטן סביב מילת המפתח"
+      },
+      {
+       "x": 50,
+       "y": 71,
+       "label": "מילת המפתח בפונט הכותרות, במרכז"
+      },
+      {
+       "x": 40,
+       "y": 78,
+       "label": "כ־120 פיקסלים מתחת לסנטר (נמדד)"
+      }
+     ]
+    }
+   ],
+   "why": {
+    "design": "",
+    "colors": "",
+    "effects": "",
+    "animations": ""
+   }
+  },
+  {
+   "id": "real-ui",
+   "name": "ממשק אמיתי שעובד",
+   "rule": "בונים מחדש את הממשק האמיתי; הסמן לוחץ על הכפתור האמיתי; טקסט מוקלד אות אחר אות.",
+   "tiles": [
+    {
+     "id": "V05-A03",
+     "label": "הקלדה"
+    },
+    {
+     "id": "V05-A04",
+     "label": "שליחה"
+    }
+   ],
+   "annotations": [
+    {
+     "thumb": "",
+     "callouts": [
+      {
+       "x": 30,
+       "y": 30,
+       "label": "נכנס מחוץ לפריים, 0.6-0.9 שנ' ease-out"
+      },
+      {
+       "x": 60,
+       "y": 45,
+       "label": "לוגו וכתובת אמיתיים"
+      },
+      {
+       "x": 50,
+       "y": 60,
+       "label": "יוצא מעבר לקצה, 0.45-0.6 שנ' ease-in"
+      }
+     ]
+    }
+   ],
+   "why": {
+    "design": "",
+    "colors": "",
+    "effects": "",
+    "animations": ""
+   }
+  }
+ ]
+}
+</script>
+<script>
+(function(){
+  const data = JSON.parse(document.getElementById('board-data').textContent);
+  const KEY = 'board:' + data.style;
+  let notes = {};
+  try { notes = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e) { notes = {}; }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(notes)); } catch(e) {} };
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const main = document.getElementById('main'), pages = document.getElementById('pages');
+  const WHY = [["design","למה ה<em>עיצוב</em> הזה?","העיצוב"],["colors","למה ה<em>צבעים</em> האלה?","הצבעים"],["effects","למה ה<em>אפקטים</em> האלה?","האפקטים"],["animations","למה ה<em>אנימציות</em> האלה?","האנימציות"]];
+  const TOK = {textures:"טקסטורות",shapes:"צורות",sizing:"גדלים",layout:"פריסה"};
+
+  const top = document.createElement('div'); top.className = 'top';
+  top.innerHTML = `<div><h1 dir="auto"><span class="on-accent">בורד</span> ${esc(data.style)}</h1><div class="sub" dir="auto">${esc(data.subtitle || '')}</div></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary" id="copy" type="button">העתקת ההערות לבורד</button></div>`;
+  main.appendChild(top);
+
+  const link = (id, name) => { const a = document.createElement('a'); a.href = '#' + id; a.textContent = name; a.dataset.id = id; a.dir = 'auto'; pages.appendChild(a); };
+  link('full', 'כל ההשראות');
+
+  const t = data.tokens || {};
+  const full = document.createElement('section'); full.className = 'panel'; full.id = 'full';
+  const allTiles = data.categories.flatMap(c => c.tiles.map(x => Object.assign({cat:c.name}, x)));
+  full.innerHTML = `<h2>כל ההשראות</h2><div class="count">${allTiles.length} רפרנסים · ${data.categories.length} קטגוריות</div>
+    <div class="tokens">
+      <div class="tok"><h3>פונטים</h3>${(t.fonts||[]).map(f => `<div class="font-sample" dir="auto" style="${esc(f.css)}">${esc(f.sample)}</div><p dir="auto"><b>${esc(f.name)}</b> · ${esc(f.role)}</p>`).join('')}</div>
+      <div class="tok"><h3>צבעים</h3><div class="sw">${(t.colors||[]).map(c => `<div><b style="background:${esc(c.hex)}"></b><small dir="auto">${esc(c.name)}<br><span dir="ltr">${esc(c.hex)}</span></small></div>`).join('')}</div></div>
+      ${Object.keys(TOK).map(k => `<div class="tok"><h3>${TOK[k]}</h3>${(t[k]||[]).map(x => `<p dir="auto">${esc(x)}</p>`).join('')}</div>`).join('')}
+    </div><div class="grid" id="grid-full"></div>`;
+  main.appendChild(full);
+
+  function tile(x){
+    const b = document.createElement('button'); b.type = 'button';
+    b.className = 'tile' + (x.thumb ? '' : ' empty');
+    if (x.thumb) b.style.backgroundImage = `url('${x.thumb}')`;
+    b.innerHTML = `<span>${esc(x.id)}${x.label ? ' · ' + esc(x.label) : ''}</span>`;
+    b.setAttribute('aria-label', `${x.id} ${x.label || ''}`);
+    b.onclick = () => open(x);
+    return b;
+  }
+  allTiles.forEach(x => document.getElementById('grid-full').appendChild(tile(x)));
+
+  data.categories.forEach(c => {
+    link(c.id, c.name);
+    const p = document.createElement('section'); p.className = 'panel'; p.id = c.id;
+    notes[c.id] = notes[c.id] || {};
+    p.innerHTML = `<h2 dir="auto">${esc(c.name)}</h2><div class="count">${c.tiles.length} רפרנסים</div>
+      ${c.rule ? `<p class="rule" dir="auto">${esc(c.rule)}</p>` : ''}
+      <div class="grid"></div>
+      <div class="ann-row">${(c.annotations||[]).map((a,i) => `
+        <div class="ann" data-i="${i}"><div class="frame" style="${a.thumb ? `background-image:url('${esc(a.thumb)}')` : ''}">${a.callouts.map(k => `<i style="left:${k.x}%;top:${k.y}%"></i>`).join('')}</div>
+          <ol>${a.callouts.map(k => `<li dir="auto">${esc(k.label)}</li>`).join('')}</ol><svg aria-hidden="true"></svg></div>`).join('')}</div>
+      <div class="why">${WHY.map(([k, l]) => `<div><label for="w-${c.id}-${k}">${l}</label>
+        <textarea id="w-${c.id}-${k}" dir="auto" data-k="${k}">${esc(notes[c.id][k] ?? (c.why||{})[k] ?? '')}</textarea></div>`).join('')}</div>`;
+    main.appendChild(p);
+    c.tiles.forEach(x => p.querySelector('.grid').appendChild(tile(Object.assign({cat:c.name}, x))));
+    p.querySelectorAll('textarea').forEach(ta => ta.addEventListener('input', () => { notes[c.id][ta.dataset.k] = ta.value; save(); }));
+  });
+
+  function drawCallouts(){
+    document.querySelectorAll('.ann').forEach(ann => {
+      const svg = ann.querySelector('svg'), box = ann.getBoundingClientRect();
+      const dots = ann.querySelectorAll('.frame i'), labels = ann.querySelectorAll('li');
+      let d = '';
+      dots.forEach((dot, i) => {
+        const a = dot.getBoundingClientRect(), l = labels[i] && labels[i].getBoundingClientRect();
+        if (!l) return;
+        const x1 = a.left + a.width/2 - box.left, y1 = a.top + a.height/2 - box.top;
+        const labelsLeft = l.right < a.left;   // in RTL the labels sit left of the frame
+        const x2 = (labelsLeft ? l.right + 8 : l.left - 8) - box.left, y2 = l.top + l.height/2 - box.top;
+        const mx = x1 + (x2 - x1) * .55;
+        d += `M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2} `;
+      });
+      svg.innerHTML = `<path d="${d}"/>`;
+    });
+  }
+  drawCallouts(); addEventListener('resize', drawCallouts);
+  if (document.fonts) document.fonts.ready.then(drawCallouts);
+
+  const dlg = document.getElementById('dlg'), body = document.getElementById('dlg-body');
+  function open(x){
+    body.innerHTML = `${x.clip ? `<video src="${esc(x.clip)}" controls autoplay muted loop playsinline></video>` : (x.thumb ? `<img src="${esc(x.thumb)}" alt="">` : '<div class="tile empty" style="cursor:default"><span>אין עדיין מדיה</span></div>')}
+      <div style="min-width:0"><h2 style="margin:0 0 4px;font-size:34px" dir="ltr">${esc(x.id)}</h2><div class="count" dir="auto">${esc(x.cat || '')}</div>
+      ${x.strip ? `<img src="${esc(x.strip)}" alt="כל הפריימים של האנימציה" style="margin-top:12px">` : ''}
+      ${x.notes ? `<pre dir="auto" style="margin-top:12px">${esc(x.notes)}</pre>` : ''}</div>`;
+    if (dlg.showModal) dlg.showModal();
+  }
+  document.getElementById('dlg-x').onclick = () => dlg.close();
+
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) pages.querySelectorAll('a').forEach(a => a.classList.toggle('on', a.dataset.id === e.target.id));
+  }), {rootMargin:'-20% 0px -70% 0px'});
+  document.querySelectorAll('.panel').forEach(p => io.observe(p));
+  if (location.hash) { const el = document.getElementById(location.hash.slice(1)); if (el) el.scrollIntoView(); }
+
+  const copy = document.getElementById('copy');
+  copy.onclick = () => {
+    const L = [`# ${data.style}: הערות לבורד`, ''];
+    data.categories.forEach(c => {
+      L.push(`## ${c.name}`);
+      WHY.forEach(([k,,h]) => { const v = (notes[c.id][k] ?? (c.why||{})[k] ?? '').trim(); if (v) L.push(`- למה ${h}: ${v}`); });
+      L.push('');
+    });
+    const txt = L.join('\n');
+    const ok = () => { copy.textContent = '✓ הועתק, הדביקו ל־Claude'; setTimeout(() => copy.textContent = 'העתקת ההערות לבורד', 2600); };
+    const fb = () => { let ta = document.getElementById('board-out'); if (!ta) { ta = document.createElement('textarea'); ta.id = 'board-out'; ta.rows = 8; top.appendChild(ta); } ta.value = txt; ta.select(); copy.textContent = 'סמנו והעתיקו את הטקסט'; };
+    navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(txt).then(ok, fb) : fb();
+  };
+})();
+</script>
+<script>
+(function(){
+  var KEY='style-lab:theme', root=document.documentElement;
+  try{var t=localStorage.getItem(KEY); if(t) root.dataset.theme=t;}catch(e){}
+  var b=document.createElement('button'); b.type='button'; b.className='btn theme-btn';
+  var label=function(){var dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches; b.textContent=dark?'☀ בהיר':'☾ כהה';};
+  b.onclick=function(){var dark=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme=dark?'light':'dark'; try{localStorage.setItem(KEY,root.dataset.theme);}catch(e){} label();};
+  label(); document.body.appendChild(b);
+})();
+</script>
+</body>
+</html>
