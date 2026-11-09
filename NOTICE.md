@@ -17,6 +17,7 @@ Some skills adapt public material from the projects below. Each adapted skill ca
 | `launch-brief` | planning questions and creative laws adapted from `/brag` | https://github.com/latent-spaces/brag | MIT, Shunit Haviv Hakimi (notice in `SKILL.md`). The music bundled with `/brag` is CC BY 4.0 (Sascha Ende, ende.app); credit it if you use it |
 | `code-explainer-video` | frame checklist adapted from `grammar/FRAME.md` of Animate | https://github.com/cth9191/animate | MIT, Copyright (c) 2026 cth9191 |
 | `instagram-content-copilot` | condensed from `instagram-agent-skill` | https://github.com/Jakeschincariol/instagram-agent-skill | MIT, Copyright (c) 2026 Jake Schincariol (full text in `THIRD-PARTY-LICENSE-MIT.txt`) |
+| `style-lab` | workflow idea only (train a style from references + a board, then edit from a human plan); no text, prompts or assets copied. Build engine HyperFrames is referenced, not bundled | Joseph's YouTube video https://youtu.be/g9xoKm5DEeU (inspiration, credited in `SKILL.md`); https://github.com/heygen-com/hyperframes | n/a; HyperFrames: Apache License 2.0, HeyGen |
 | `short-drama-5-steps`, `first-client-funnel`, `faceless-channel-planner` | method and ideas only; no third-party text copied | Higgsfield blog posts (no license stated), linked and not copied | n/a |
 
 Product names (Higgsfield, Seedance, Kling, Wan, Cartesia, ElevenLabs, HyperFrames, Blender, Instagram, YouTube) belong to their owners.
