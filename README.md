@@ -1,9 +1,9 @@
 # סקילים לקורס "וידאו עם AI" · AI Video Course Skills
 
 **סקיל = הוראות קבועות ל־Claude.** זו תיקייה אחת עם קובץ `SKILL.md` שאומר ל־Claude איך לבצע משימה מסוימת צעד אחרי צעד, כל פעם באותה הדרך.
-כאן יש 15 סקילים, אחד לכל מתנה שמקבלים בתגובה לריל של גבריאל, ועוד סקיל בונוס מתקדם אחד (`style-lab`). כל סקיל מדבר איתכם בעברית.
+כאן יש 15 סקילים, אחד לכל מתנה שמקבלים בתגובה לריל של גבריאל. כל סקיל מדבר איתכם בעברית.
 
-*A collection of 15 Claude skills (Hebrew-first) for AI video work: long videos, prompt remixing, Blender-to-Seedance, motion briefs, Hebrew voice tests, shot budgeting, code-built reels, model A/B tests, AI influencers, launch videos, short drama, finding first clients, faceless channels, code-built explainers and an Instagram content copilot, plus one advanced bonus skill (style-lab: teach Claude an editing style from reference videos, then edit your own footage in it with review rounds).*
+*A collection of 15 Claude skills (Hebrew-first) for AI video work: long videos, prompt remixing, Blender-to-Seedance, motion briefs, Hebrew voice tests, shot budgeting, code-built reels, model A/B tests, AI influencers, launch videos, short drama, finding first clients, faceless channels, code-built explainers and an Instagram content copilot.*
 
 ## הסקילים
 
@@ -24,7 +24,6 @@
 | ערוץ | [`faceless-channel-planner`](skills/faceless-channel-planner) | בונה קובץ ערוץ אחד (`CHANNEL.md`) לערוץ יוטיוב בלי פנים |
 | אטלס | [`code-explainer-video`](skills/code-explainer-video) | סרטון הסבר שנבנה מקוד, בסגנון שתדביקו לו |
 | סוכן | [`instagram-content-copilot`](skills/instagram-content-copilot) | תוכנית שבועית לאינסטגרם, פענוח רילסים ותסריטים בקול שלכם. מכין בלבד, לא מפרסם |
-| בונוס (מתקדם) | [`style-lab`](skills/style-lab) | מלמד את Claude סגנון עריכה מסרטוני ריפרנס או מתיאור (בורד סגנון לאישור), ועורך את הסרטונים שלכם בסגנון הזה: תוכנית עריכה, בנייה, חדר הערות וסבבי תיקונים. דורש Claude Code, ffmpeg ו־Python |
 
 ## איך מתקינים
 
